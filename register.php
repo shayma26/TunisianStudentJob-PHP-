@@ -46,20 +46,15 @@
             $logoType = strtolower(pathinfo($logo,PATHINFO_EXTENSION));
             // Allow certain file formats
             if($logoType != "jpg" && $logoType != "png" && $logoType != "jpeg" && $logoType != "gif" ) {
-                echo "Sorry, image files are allowed.";
+                echo "Sorry, only image files are allowed.";
             }else{
                   //create sql
                 $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
 
                 //save to DB and check
                 if(mysqli_query($conn, $sql)){
-                //check image upload
-                    if (move_uploaded_file($_FILES['logo']['tmp_name'], $target)) {
-                        echo "Image uploaded successfully";
-                    }else{
-                        echo "Failed to upload image";
-                    }
                     echo 'User added';
+
                 }else{
                     echo 'query error: '.mysqli_error($conn);
                 }
