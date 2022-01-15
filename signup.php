@@ -285,7 +285,7 @@
 
     <div class="col-md-6">
       <label for="logo" class="form-label">Your company logo</label>
-      <input class="form-control" type="file" id="logo" name="logo">
+      <input class="form-control" type="file" id="logo" name="logo" accept="image/*">
   </div>
 
 </div><!--Employer select END-->

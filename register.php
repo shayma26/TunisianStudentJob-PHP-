@@ -11,17 +11,17 @@
         $psd2=$_POST['password2'];
         if($psd1==$psd2){
 
-           $fname=$_POST['fname'];
-           $lname=$_POST['lname'];
-           $gender=$_POST['gender'];
-           $birthdate=$_POST['birthdate'];
-           $address=$_POST['address'];
-           $city=$_POST['city'];
-           $zip=$_POST['zip'];
-           $email=$_POST['email'];
-           $phone=$_POST['phone'];
-           $type=$_POST['type'];
-           if($type=="student"){
+         $fname=$_POST['fname'];
+         $lname=$_POST['lname'];
+         $gender=$_POST['gender'];
+         $birthdate=$_POST['birthdate'];
+         $address=$_POST['address'];
+         $city=$_POST['city'];
+         $zip=$_POST['zip'];
+         $email=$_POST['email'];
+         $phone=$_POST['phone'];
+         $type=$_POST['type'];
+         if($type=="student"){
             $university=$_POST['university'];
             $institute=$_POST['institute'];
             $speciality=$_POST['speciality'];
@@ -42,24 +42,29 @@
             $website=$_POST['website'];
             $logo=$_FILES['logo']['name'];
                 // image file directory
-            $target = "images/".basename($logo);
-
-
-               //create sql
-            $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
+            $logoTarget = "images/".basename($logo);
+            $logoType = strtolower(pathinfo($logo,PATHINFO_EXTENSION));
+            // Allow certain file formats
+            if($logoType != "jpg" && $logoType != "png" && $logoType != "jpeg" && $logoType != "gif" ) {
+                echo "Sorry, image files are allowed.";
+            }else{
+                  //create sql
+                $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
 
                 //save to DB and check
-            if(mysqli_query($conn, $sql)){
+                if(mysqli_query($conn, $sql)){
                 //check image upload
-                if (move_uploaded_file($_FILES['logo']['tmp_name'], $target)) {
-                    echo "Image uploaded successfully";
+                    if (move_uploaded_file($_FILES['logo']['tmp_name'], $target)) {
+                        echo "Image uploaded successfully";
+                    }else{
+                        echo "Failed to upload image";
+                    }
+                    echo 'User added';
                 }else{
-                    echo "Failed to upload image";
+                    echo 'query error: '.mysqli_error($conn);
                 }
-                echo 'User added';
-            }else{
-                echo 'query error: '.mysqli_error($conn);
             }
+
         }
     }
     else{
