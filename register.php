@@ -1,52 +1,61 @@
-<?php
+    <?php
 
-       //connect to database
+           //connect to database
     include('config/db_connect.php');
 
-        //submit verification
-
-        //procss the value from the form
-    //check whether the submit button is clicked or not
+            //submit verification
     if(isset($_POST['submit']))
     {
-        //check password confirmation
-        $mdp1=$_POST['mdp1'];
-        $mdp2=$_POST['mdp2'];
-        if($mdp1==mdp2){
+            //check password confirmation
+        $psd1=$_POST['password1'];
+        $psd2=$_POST['password2'];
+        if($psd1==$psd2){
 
-           $nom=$_POST['nom'];
-           $prenom=$_POST['prenom'];
-           $genre=$_POST['genre'];
-           $date_naiss=$_POST['date_naiss'];
-           $pays=$_POST['pays'];
-           $adresse=$_POST['adresse'];
-           $code_postal=$_POST['code_postal'];
+           $fname=$_POST['fname'];
+           $lname=$_POST['lname'];
+           $gender=$_POST['gender'];
+           $birthdate=$_POST['birthdate'];
+           $address=$_POST['address'];
+           $city=$_POST['city'];
+           $zip=$_POST['zip'];
            $email=$_POST['email'];
-           $num_tel=$_POST['num_tel'];
+           $phone=$_POST['phone'];
            $type=$_POST['type'];
-           if($type=="etudiant"){
-            $universite=$_POST['universite'];
-            $institut=$_POST['institut'];
-            $specialite=$_POST['specialite'];
-            $niveau=$_POST['niveau'];
-            $competence=$_POST['competences'];
-           //create sql
-            $sql = "INSERT INTO etudiant VALUES(null,'$nom','$prenom','$genre','$email', '$mdp','$num_tel','$date_naiss','$pays','$adresse','$code_postal','$universite','$institut','$specialite','$')";
+           if($type=="student"){
+            $university=$_POST['university'];
+            $institute=$_POST['institute'];
+            $speciality=$_POST['speciality'];
+            $level=$_POST['level'];
+            $skills = implode(",", $_POST['skills']);
 
-            //save to DB and check
+               //create sql
+            $sql = "INSERT INTO etudiant VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$university','$institute','$speciality','$level','$skills')";
+
+                //save to DB and check
             if(mysqli_query($conn, $sql)){
                 echo 'User added';
             }else{
                 echo 'query error: '.mysqli_error($conn);
             }
-        } else{
-            $entreprise=$_POST['entreprise'];
-            $pays=$_POST['pays'];
-           //create sql
-            $sql = "INSERT INTO users(nom, prenom, email, mot_passe) VALUES('$nom','$prenom','$email', '$mdp')";
+        } else{//type=employer
+            $company=$_POST['company'];
+            $website=$_POST['website'];
+            $logo=$_FILES['logo']['name'];
+                // image file directory
+            $target = "images/".basename($logo);
 
-            //save to DB and check
+
+               //create sql
+            $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
+
+                //save to DB and check
             if(mysqli_query($conn, $sql)){
+                //check image upload
+                if (move_uploaded_file($_FILES['logo']['tmp_name'], $target)) {
+                    echo "Image uploaded successfully";
+                }else{
+                    echo "Failed to upload image";
+                }
                 echo 'User added';
             }else{
                 echo 'query error: '.mysqli_error($conn);
@@ -54,28 +63,28 @@
         }
     }
     else{
-        $_SESSION['pwd-not-match']="<div> Veuillez confirmer votre mot de passe </div>"
-        header('location'.SITEURL.'/index.php');
+        $_SESSION['pwd-not-match']="<div> Veuillez confirmer votre mot de passe </div>";
+        header('location:'.'http://localhost/myProject');
     }
 }
 ?>
 
 <?php 
-    //write query for all users
-    $sql = 'SELECT * FROM users ORDER BY prenom';//try timestamp
+        //write query for all users
+        $sql = 'SELECT * FROM etudiant ORDER BY prenom_et';//try timestamp
 
-    //make query and get result
-    $result = mysqli_query($conn, $sql);//array of records
+        //make query and get result
+        $result = mysqli_query($conn, $sql);//array of records
 
-    //fetch the resulting rows as an array
-    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);//the second param means that this will return an associative array
+        //fetch the resulting rows as an array
+        $users = mysqli_fetch_all($result, MYSQLI_ASSOC);//the second param means that this will return an associative array
 
-    //free result from memory (a good practise not necessary)
-    mysqli_free_result($result);
+        //free result from memory (a good practise not necessary)
+        mysqli_free_result($result);
 
-    //close connection
-    mysqli_close($conn);
+        //close connection
+        mysqli_close($conn);
 
-    print_r($users);//conversion ml array lstring lel affichage
-    ?>
+        print_r($users);//conversion ml array lstring lel affichage
+        ?>
 

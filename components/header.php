@@ -54,16 +54,16 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href="index.html">Tunisian Student Job</a></h1>
+        <h1><a href="index.php">Tunisian Student Job</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a class="active" href="index.php">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="services.php">Services</a></li>
+          <li><a href="signup.php">Sign up</a></li>
          <!-- <li><a href="portfolio.html">Portfolio</a></li>
          <li><a href="team.html">Team</a></li>
           <li><a href="pricing.html">Pricing</a></li>-->
