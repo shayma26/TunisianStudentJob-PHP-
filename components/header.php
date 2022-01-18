@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -35,6 +36,9 @@
 
 </head>
 <body>
+  <?php 
+include('config/db_connect.php');
+?>
 <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -63,11 +67,13 @@
         <ul>
           <li><a class="active" href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="services.php">Services</a></li>
+          <li><a href="signup.php">Sign up</a></li>
+          <li><a href="signin.php">Sign in</a></li>
          <!-- <li><a href="portfolio.html">Portfolio</a></li>
          <li><a href="team.html">Team</a></li>
           <li><a href="pricing.html">Pricing</a></li>-->
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="announce.php">Announce</a></li>
+          
          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
