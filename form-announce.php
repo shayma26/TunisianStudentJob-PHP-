@@ -22,28 +22,12 @@
                     <label for="inputposition4" class="form-label">Position</label>
                     <input type="text" class="form-control" id="inputposition4" name="position">
                 </div>
+                <div class="col-md-6">
 
+                </div>
                 <div class="col-md-6">
                     <label for="inputloc4" class="form-label">Location</label>
                     <input type="text" class="form-control" id="inputloc4" name="location">
-                </div>
-
-                <div class="col-md-6">
-                    <label for="inputDateS" class="form-label">Start Date</label>
-                    <input type="date" class="form-control" id="inputDateS" name="start_date">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputDateE" class="form-label">End Date</label>
-                    <input type="date" class="form-control" id="inputDateE" name="end_date">
-                </div>
-
-                <div class="col-md-6">
-                    <label for="inputsal4" class="form-label">Salaire</label>
-                    <input type="text" class="form-control" id="inputsal4" name="salaire">
-                </div>
-                <div class="col-md-6">
-                    <label for="img" class="form-label">Image for the position</label>
-                    <input class="form-control" type="file" id="img" name="img" accept="image/*">
                 </div>
                 <!-- type of job-->
                 <div class="col-md-12">
@@ -79,6 +63,22 @@
 
                 </div>
                 <!--end type-->
+                <div class="col-md-6">
+                    <label for="img" class="form-label">Image for the position</label>
+                    <input class="form-control" type="file" id="img" name="img" accept="image/*">
+                </div>
+                <div class="col-md-6">
+
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputsal4" class="form-label">Salaire</label>
+                    <input type="text" class="form-control" id="inputsal4" name="salaire">
+                </div>
+
+
+
+
                 <!-- skills -->
                 <div class="col-md-12">
                     <label for="skills" class="col-form-label col-md-12">Skills</label>
@@ -118,13 +118,22 @@
                 <!--end skills-->
 
                 <div class="col-md-6">
+                    <label for="inputDateS" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="inputDateS" name="start_date">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputDateE" class="form-label">End Date</label>
+                    <input type="date" class="form-control" id="inputDateE" name="end_date">
+                </div>
+
+                <div>
                     <label for="inputdesc" class="form-label">Desciption</label>
-                    <textarea rows="5" cols="33" class="form-control" id="inputdesc" name="description"></textarea>
+                    <textarea rows="5" cols="100" class="form-control" id="inputdesc" name="description"></textarea>
                 </div>
                 <!--Student select END-->
 
 
-                <div class="col-12">
+                <div class="col-6">
                     <button type="submit" class="btn btn-primary" name="submit">Add</button>
                 </div>
             </form>
