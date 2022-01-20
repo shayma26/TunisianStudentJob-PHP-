@@ -55,7 +55,11 @@
 
                 // Save to DB and check
                 if(mysqli_query($conn, $sql)){
-                    echo 'User added';
+                    $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
+                    $_SESSION['user'] = $email;
+                    $_SESSION['username'] = $fname;
+                    $_SESSION['type'] = 'student';
+                    header('location: '.SITEURL);
                 }else{
                     echo 'query error: '.mysqli_error($conn);
                 }
@@ -80,11 +84,10 @@
                 $logoTarget = "images/".basename($logo);
                 $logoType = strtolower(pathinfo($logo,PATHINFO_EXTENSION));
 
-            // Allow only image file formats or null
+            // Allow only image file formats or empty
                 if($logoType != "jpg" && $logoType != "png" && $logoType != "jpeg" && $logoType != "gif" && $_FILES['logo']['error']!=4 ) {
                    $_SESSION['imgError'] = "<div class=\"alert alert-danger\" role=\"alert\">Only image files are allowed".$logoType."</div>";
                     header('location:'.SITEURL.'signup.php');
-                    echo "logo type : ".$_FILES['logo']['error']." and ".$_FILES['logo']['size'];
                 }else{
                 // Insertion request
                     $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
@@ -92,7 +95,10 @@
                 // Save to DB and check
                     if(mysqli_query($conn, $sql)){
                         $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
-                        header('location:'.SITEURL);
+                        $_SESSION['user'] = $email;
+                    $_SESSION['username'] = $fname;
+                    $_SESSION['type'] = 'employer';
+                    header('location: '.SITEURL);
                     }else{
                         echo 'query error: '.mysqli_error($conn);
                     }
@@ -103,7 +109,7 @@
     }
     else{        
         $_SESSION['pwd-not-match']= "<div class=\"alert alert-danger\" role=\"alert\"> Veuillez confirmer votre mot de passe </div>";
-        header('location:'.'http://localhost/myProject/signup.php');
+        header('location:'.SITEURL.'signup.php');
     }
 }
 
