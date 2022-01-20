@@ -1,6 +1,10 @@
 
 <?php
         include('components/header.php');
+        if(isset($_SESSION['registerSuccess'])){
+        echo $_SESSION['registerSuccess'];
+        unset($_SESSION['registerSuccess']);
+    }
     ?>
   <!-- ======= Hero Section ======= -->
   <section id="hero">

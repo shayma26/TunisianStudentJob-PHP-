@@ -1,4 +1,7 @@
-<?php include('components/header.php'); ?>
+<?php include('components/header.php'); 
+    
+
+?>
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -13,18 +16,31 @@
 
         </div>
     </section><!-- End Breadcrumbs -->
-    <?php
+    
+    <section id="services" class="services">
+        <div class="container">
 
-    if(isset($_SESSION['pwd-not-match']))
-    {
+            <?php
+
+    if(isset($_SESSION['pwd-not-match'])){
         echo $_SESSION['pwd-not-match'];
         unset($_SESSION['pwd-not-match']);
+    }
+    if(isset($_SESSION['emailExist'])){
+        echo $_SESSION['emailExist'];
+        unset($_SESSION['emailExist']);
+    }
+    if(isset($_SESSION['companyExist'])){
+        echo $_SESSION['companyExist'];
+        unset($_SESSION['companyExist']);
+    }
+    if(isset($_SESSION['imgError'])){
+        echo $_SESSION['imgError'];
+        unset($_SESSION['imgError']);
     }
 
     ?>
 
-    <section id="services" class="services">
-        <div class="container">
 
             <form class="row g-3" method="POST" action="register.php" id="signup_form" enctype="multipart/form-data">
                 <div class="col-md-6">
@@ -293,6 +309,7 @@
 
 <div class="col-12">
     <button type="submit" class="btn btn-primary" name="submit" >Sign up</button>
+
     <!--Make one skill at least checked-->
     <script type="text/javascript">
         if (document.getElementById('student').checked) {

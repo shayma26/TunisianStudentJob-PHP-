@@ -1,72 +1,118 @@
     <?php
 
-           //connect to database
-    include('config/db_connect.php');
+    // Connect to database
+    include('config/constants.php');
 
-            //submit verification
+    // Submit verification
     if(isset($_POST['submit']))
     {
-            //check password confirmation
-        $psd1=$_POST['password1'];
-        $psd2=$_POST['password2'];
-        if($psd1==$psd2){
+        // Check email if existed in students
+        $email = $_POST['email'];
+        $verifemailreq = "SELECT * FROM etudiant WHERE email_et='$email'";
 
-         $fname=$_POST['fname'];
-         $lname=$_POST['lname'];
-         $gender=$_POST['gender'];
-         $birthdate=$_POST['birthdate'];
-         $address=$_POST['address'];
-         $city=$_POST['city'];
-         $zip=$_POST['zip'];
-         $email=$_POST['email'];
-         $phone=$_POST['phone'];
-         $type=$_POST['type'];
-         if($type=="student"){
-            $university=$_POST['university'];
-            $institute=$_POST['institute'];
-            $speciality=$_POST['speciality'];
-            $level=$_POST['level'];
-            $skills = implode(",", $_POST['skills']);
+        $res = mysqli_query($conn, $verifemailreq);
 
-               //create sql
-            $sql = "INSERT INTO etudiant VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$university','$institute','$speciality','$level','$skills')";
+        $count = mysqli_num_rows($res);
 
-                //save to DB and check
-            if(mysqli_query($conn, $sql)){
-                echo 'User added';
-            }else{
-                echo 'query error: '.mysqli_error($conn);
-            }
-        } else{//type=employer
-            $company=$_POST['company'];
-            $website=$_POST['website'];
-            $logo=$_FILES['logo']['name'];
-                // image file directory
-            $logoTarget = "images/".basename($logo);
-            $logoType = strtolower(pathinfo($logo,PATHINFO_EXTENSION));
-            // Allow certain file formats
-            if($logoType != "jpg" && $logoType != "png" && $logoType != "jpeg" && $logoType != "gif" ) {
-                echo "Sorry, only image files are allowed.";
-            }else{
-                  //create sql
-                $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
+        if($count==1)
+        {
+            $_SESSION['emailExist'] = "<div class=\"alert alert-danger\" role=\"alert\">Please enter a valid e-mail</div>";
+            header('location:'.SITEURL.'signup.php');
+        }
+        else{// Check email if existed in employers
+           $verifemailreq="SELECT email_em FROM employeur WHERE email_em='$email'";
+           $res = mysqli_query($conn, $verifemailreq);
+           $count = mysqli_num_rows($res);
 
-                //save to DB and check
+           if($count==1){
+            $_SESSION['emailExist'] = "<div class=\"alert alert-danger\" role=\"alert\">Please enter a valid e-mail</div>";
+            header('location:'.SITEURL.'signup.php');
+        }else{
+            // Check password confirmation
+            $psd1=$_POST['password1'];
+            $psd2=$_POST['password2'];
+
+            if($psd1==$psd2){
+               $fname=$_POST['fname'];
+               $lname=$_POST['lname'];
+               $gender=$_POST['gender'];
+               $birthdate=$_POST['birthdate'];
+               $address=$_POST['address'];
+               $city=$_POST['city'];
+               $zip=$_POST['zip'];
+               $phone=$_POST['phone'];
+               $type=$_POST['type'];
+
+               if($type=="student"){
+                $university=$_POST['university'];
+                $institute=$_POST['institute'];
+                $speciality=$_POST['speciality'];
+                $level=$_POST['level'];
+                $skills = implode(",", $_POST['skills']);
+
+                // Create sql
+                $sql = "INSERT INTO etudiant VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$university','$institute','$speciality','$level','$skills')";
+
+                // Save to DB and check
                 if(mysqli_query($conn, $sql)){
                     echo 'User added';
-
                 }else{
                     echo 'query error: '.mysqli_error($conn);
+                }
+        } else{// type=employer
+
+        // Check company if existed
+            $company=$_POST['company'];
+            $verifcompanyreq = "SELECT * FROM employeur WHERE entreprise='$company'";
+
+            $res = mysqli_query($conn, $verifcompanyreq);
+
+            $count = mysqli_num_rows($res);
+
+            if($count==1){
+                $_SESSION['companyExist'] = "<div class=\"alert alert-danger\" role=\"alert\">Please enter a valid company name</div>";
+                header('location:'.SITEURL.'signup.php');
+            }
+            else{
+                $website=$_POST['website'];
+                $logo=$_FILES['logo']['name'];
+            // image file directory
+                $logoTarget = "images/".basename($logo);
+                $logoType = strtolower(pathinfo($logo,PATHINFO_EXTENSION));
+
+            // Allow only image file formats or null
+                if($logoType != "jpg" && $logoType != "png" && $logoType != "jpeg" && $logoType != "gif" && $_FILES['logo']['error']!=4 ) {
+                   $_SESSION['imgError'] = "<div class=\"alert alert-danger\" role=\"alert\">Only image files are allowed".$logoType."</div>";
+                    header('location:'.SITEURL.'signup.php');
+                    echo "logo type : ".$_FILES['logo']['error']." and ".$_FILES['logo']['size'];
+                }else{
+                // Insertion request
+                    $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
+
+                // Save to DB and check
+                    if(mysqli_query($conn, $sql)){
+                        $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
+                        header('location:'.SITEURL);
+                    }else{
+                        echo 'query error: '.mysqli_error($conn);
+                    }
                 }
             }
 
         }
     }
-    else{
-        $_SESSION['pwd-not-match']="<div> Veuillez confirmer votre mot de passe </div>";
-        header('location:'.'http://localhost/myProject');
+    else{        
+        $_SESSION['pwd-not-match']= "<div class=\"alert alert-danger\" role=\"alert\"> Veuillez confirmer votre mot de passe </div>";
+        header('location:'.'http://localhost/myProject/signup.php');
     }
 }
+
+}
+}
+
+
+
+
 ?>
 
 <?php 

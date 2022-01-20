@@ -1,3 +1,4 @@
+<?php include('config/constants.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +62,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="index.php">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="signup.php">Sign up</a></li>
          <!-- <li><a href="portfolio.html">Portfolio</a></li>
