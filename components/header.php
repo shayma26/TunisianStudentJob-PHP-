@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -24,22 +25,33 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <script src=
-    "https://code.jquery.com/jquery-1.12.4.min.js">
-</script>
-<style type="text/css">
-    .select{
-        display: none;
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js">
+  </script>
+  <style type="text/css">
+    .select {
+      display: none;
     }
-</style>
+
+    /*-------
+annonce
+-----*/
+    .toggle-text {
+      display: none;
+    }
+
+    .toggle-text-button {
+      color: #EB7B68;
+    }
+  </style>
 
 
 </head>
+
 <body>
-  <?php 
-include('config/db_connect.php');
-?>
-<section id="topbar" class="d-flex align-items-center">
+  <?php
+  include('config/db_connect.php');
+  ?>
+  <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">info@Studentjob.tn</a></i>
@@ -69,12 +81,12 @@ include('config/db_connect.php');
           <li><a href="about.html">About</a></li>
           <li><a href="signup.php">Sign up</a></li>
           <li><a href="signin.php">Sign in</a></li>
-         <!-- <li><a href="portfolio.html">Portfolio</a></li>
+          <!-- <li><a href="portfolio.html">Portfolio</a></li>
          <li><a href="team.html">Team</a></li>
           <li><a href="pricing.html">Pricing</a></li>-->
           <li><a href="announce.php">Announce</a></li>
-          
-         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>

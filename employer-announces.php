@@ -5,15 +5,15 @@
   <!-- ======= Breadcrumbs ======= -->
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-    <h2>Announce</h2>
+    <h2><a href='announce.php'>Announce</a></h2>
       <ol>
         <?php
         //include('config/db_connect.php');
         if (isset($_SESSION['type'])) {
           if ($_SESSION['type'] == 'employer') {
-           
+            echo "<li>My Announces</li>";
             echo "<li><a href='form-announce.php'>Add Announce</a></li>";
-            echo "<li><a href='employer-announces.php'>My Announces</a></li>";
+           
           } 
         }
         ?>
@@ -27,13 +27,15 @@
 
 
   <?php
-if (isset($_POST['submit'])) {
-  $search = $_POST['search'];
-  $sql="SELECT poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise FROM annonce WHERE localisation LIKE '%$search%' OR competences LIKE '%$search%'OR poste LIKE '%$search%' OR description LIKE '%$search%' OR entreprise LIKE '%$search%' OR type LIKE '%$search%'";
-
-}else
- { $sql = "SELECT poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise FROM annonce";
- }
+  if (isset($_POST['submit'])) {
+    $search = $_POST['search'];
+    $sql="SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise FROM annonce WHERE 
+    localisation LIKE '%$search%' OR competences LIKE '%$search%'OR poste LIKE '%$search%' OR description LIKE '%$search%' OR entreprise LIKE '%$search%' OR type LIKE '%$search%'";
+  
+  }
+ else { $email=$_SESSION['user'];
+ $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise FROM annonce WHERE email_contact='$email'";
+}
  if ($res = mysqli_query($conn, $sql)) {
     echo ' <section id="blog" class="blog">
   <div class="container" data-aos="fade-up">
@@ -42,7 +44,8 @@ if (isset($_POST['submit'])) {
 
       <div class="col-lg-8 entries">';
     while ($row = mysqli_fetch_assoc($res)) {
-
+      $id = $row['id_an'];
+      $_SESSION['id']=$id;
       $position = $row['poste'];
       $localisation = $row['localisation'];
       $date_deb = $row['date_deb'];
@@ -71,12 +74,6 @@ if (isset($_POST['submit'])) {
         echo '
       <li class="d-flex align-items-center"><i class="bi bi-building"></i>' . $entreprise . '</li>';
       }
-      if (isset($_SESSION['type'])) {
-        if ($_SESSION['type'] == 'student'){
-         echo' <form action="" method="POST">
-          <button type="submit" name="fav" class="btn"><i class="bi bi-heart  "></i></button>
-        </form>';
-        }}
       echo '
      
       <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time datetime="2020-01-01">' . $date_depot . '</time></li>
@@ -120,7 +117,7 @@ if (isset($_POST['submit'])) {
      <h5> salaire</h5>
      </div>
      <div class="col-sm">
-     ' . $salaire . 'DT
+     ' . $salaire . '
      </div>
       </div>
       <div class="row">
@@ -155,6 +152,16 @@ if (isset($_POST['submit'])) {
     ' . $competences . '
     </div>
      </div>
+     <div class="row">
+     <form class="col-sm" action="update-deleteAnnounce.php" method="POST">
+     
+<button type="submit" class="btn btn-danger" name="delete">Delete</button>
+  </form>
+  <form class="col-sm"  action="form-update-announce.php" method="POST">
+     
+  <button type="submit" class="btn btn-success" name="update">Update</button>
+    </form>
+    </div>
 </div>
   
    
@@ -190,6 +197,7 @@ if (isset($_POST['submit'])) {
    
  });
  </script>
+ 
 </div><!-- End blog entries list -->
 
 <div class="col-lg-4">

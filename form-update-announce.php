@@ -1,42 +1,62 @@
 <?php include('components/header.php'); ?>
 <main id="main">
 
-     <!-- ======= Breadcrumbs ======= -->
-  <section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
-    <h2><a href='announce.php'>Announce</a></h2>
-      <ol>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2><a href='announce.php'>Announce</a></h2>
+            <ol>
+                <?php
+                //include('config/db_connect.php');
+                if (isset($_SESSION['type'])) {
+                    if ($_SESSION['type'] == 'employer') {
+
+                        echo "<li>Update Announce</li>";
+                        echo "<li><a href='employer-announces.php'>My Announces</a></li>";
+                    }
+                }
+                ?>
+
+            </ol>
+
+
+        </div>
+
+
         <?php
-        //include('config/db_connect.php');
-        if (isset($_SESSION['type'])) {
-          if ($_SESSION['type'] == 'employer') {
-           
-            echo "<li>Add Announce</li>";
-            echo "<li><a href='employer-announces.php'>My Announces</a></li>";
-          } 
+        if (isset($_POST['update']) && isset($_SESSION['id'])) {
+            $id = $_SESSION['id'];
+            $sql = "SELECT * FROM  annonce WHERE id_an=$id";
+            if ($res = mysqli_query($conn, $sql)) {
+                $row = mysqli_fetch_assoc($res);
+                $position = $row['poste'];
+                $location = $row['localisation'];
+                $start_date = $row['date_deb'];
+                $end_date = $row['date_fin'];
+                $salaire = $row['salaire'];
+                $description = $row['description'];
+                $skills = $row['competences'];
+                $type = $row['type'];
+            }
         }
+
         ?>
-
-      </ol>
-      
-
-    </div>
-  </section><!-- End Breadcrumbs -->
+    </section><!-- End Breadcrumbs -->
 
     <section id="services" class="services">
         <div class="container">
 
-            <form class="row g-3" method="POST" action="add-announce.php" enctype="multipart/form-data">
+            <form class="row g-3" method="POST" action="update-deleteAnnounce.php" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <label for="inputposition4" class="form-label">Position</label>
-                    <input type="text" class="form-control" id="inputposition4" name="position">
+                    <input type="text" class="form-control" id="inputposition4" name="position" value="<?php echo $position; ?>">
                 </div>
                 <div class="col-md-6">
 
                 </div>
                 <div class="col-md-6">
                     <label for="inputloc4" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="inputloc4" name="location">
+                    <input type="text" class="form-control" id="inputloc4" name="location" value="<?php echo $location; ?>">
                 </div>
                 <!-- type of job-->
                 <div class="col-md-12">
@@ -73,16 +93,12 @@
                 </div>
                 <!--end type-->
                 <div class="col-md-6">
-                    <label for="img" class="form-label">Image for the position</label>
-                    <input class="form-control" type="file" id="img" name="img" accept="image/*">
-                </div>
-                <div class="col-md-6">
 
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputsal4" class="form-label">Salaire</label>
-                    <input type="text" class="form-control" id="inputsal4" name="salaire">
+                    <input type="text" class="form-control" id="inputsal4" name="salaire" value="<?php echo $salaire; ?>">
                 </div>
 
 
@@ -128,25 +144,28 @@
 
                 <div class="col-md-6">
                     <label for="inputDateS" class="form-label">Start Date</label>
-                    <input type="date" class="form-control" id="inputDateS" name="start_date">
+                    <input type="date" class="form-control" id="inputDateS" name="start_date" value="<?php echo $start_date; ?>">
                 </div>
+                
                 <div class="col-md-6">
                     <label for="inputDateE" class="form-label">End Date</label>
-                    <input type="date" class="form-control" id="inputDateE" name="end_date">
+                    <input type="date" class="form-control" id="inputDateE" name="end_date" value="<?php echo $end_date; ?>">
                 </div>
 
                 <div>
                     <label for="inputdesc" class="form-label">Desciption</label>
-                    <textarea rows="5" cols="100" class="form-control" id="inputdesc" name="description"></textarea>
+                    <textarea rows="5" cols="100" class="form-control" id="inputdesc" name="description" value="<?php echo $description; ?>"><?php echo $description; ?></textarea>
                 </div>
                 <!--Student select END-->
 
 
                 <div class="col-6">
-                    <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Update</button>
                 </div>
             </form>
 
         </div>
     </section><!-- End Register Form -->
+
+
     <?php include('components/footer.php'); ?>

@@ -23,11 +23,12 @@ if (isset($_POST['submit'])) {
 
 
     //trouve ID ,num de l'employeur en courant
-    $sql = "SELECT id_em,num_em FROM employeur WHERE email_em='$email'";
+    $sql = "SELECT id_em,num_em,entreprise FROM employeur WHERE email_em='$email'";
     if ($res = mysqli_query($conn, $sql)) {
         $row = mysqli_fetch_assoc($res);
         $id = $row['id_em'];
         $num_contact = $row['num_em'];
+        $entreprise = $row['entreprise'];
     } else {
         echo 'search_query error: ' . mysqli_error($conn);
     }
@@ -37,7 +38,7 @@ if (isset($_POST['submit'])) {
         echo "Sorry, only image files are allowed.";
     } else {
         //create sql
-        $sql2 = "INSERT INTO annonce VALUES(null,'$start_date','$end_date','$location',' $position', '$description','$type','$skills','$salaire','$id','$email','$num_contact','$img',CURRENT_TIMESTAMP()
+        $sql2 = "INSERT INTO annonce VALUES(null,'$start_date','$end_date','$location',' $position', '$description','$type','$skills','$salaire','$id','$email','$num_contact','$img',CURRENT_TIMESTAMP(),'$entreprise'
             )";
 
         //save to DB and check
