@@ -5,21 +5,23 @@
   <!-- ======= Breadcrumbs ======= -->
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-    <h2>Announce</h2>
+      <h2>Announce</h2>
       <ol>
         <?php
         //include('config/db_connect.php');
         if (isset($_SESSION['type'])) {
           if ($_SESSION['type'] == 'employer') {
-           
+
             echo "<li><a href='form-announce.php'>Add Announce</a></li>";
             echo "<li><a href='employer-announces.php'>My Announces</a></li>";
-          } 
+          } else if ($_SESSION['type'] == 'student') {
+            echo "<li><a href='favourite-announces.php'>My Favourite Announces</a></li>";
+          }
         }
         ?>
 
       </ol>
-      
+
 
     </div>
   </section><!-- End Breadcrumbs -->
@@ -27,14 +29,35 @@
 
 
   <?php
+  if (isset($_GET['summer'])) {
+    $search = 'summer';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else if (isset($_GET['partTime'])) {
+    $search = 'partTime';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else if (isset($_GET['weekend'])) {
+    $search = 'weekend';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else if (isset($_GET['evening'])) {
+    $search = 'evening';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else if (isset($_GET['home'])) {
+    $search = 'home';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else if (isset($_GET['internship'])) {
+    $search = 'internship';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else if (isset($_GET['graduate'])) {
+    $search = 'graduate';
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE type LIKE '%$search%'";
+  } else
 if (isset($_POST['submit'])) {
-  $search = $_POST['search'];
-  $sql="SELECT poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise FROM annonce WHERE localisation LIKE '%$search%' OR competences LIKE '%$search%'OR poste LIKE '%$search%' OR description LIKE '%$search%' OR entreprise LIKE '%$search%' OR type LIKE '%$search%'";
-
-}else
- { $sql = "SELECT poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise FROM annonce";
- }
- if ($res = mysqli_query($conn, $sql)) {
+    $search = $_POST['search'];
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce WHERE localisation LIKE '%$search%' OR competences LIKE '%$search%'OR poste LIKE '%$search%' OR description LIKE '%$search%' OR entreprise LIKE '%$search%' OR type LIKE '%$search%'";
+  } else {
+    $sql = "SELECT id_an,poste,localisation,date_deb,date_fin,salaire,date_depot,email_contact,num_contact,image,type,competences,description,entreprise,nombre_vues FROM annonce";
+  }
+  if ($res = mysqli_query($conn, $sql)) {
     echo ' <section id="blog" class="blog">
   <div class="container" data-aos="fade-up">
 
@@ -42,7 +65,8 @@ if (isset($_POST['submit'])) {
 
       <div class="col-lg-8 entries">';
     while ($row = mysqli_fetch_assoc($res)) {
-
+      $id_an = $row['id_an'];
+      $_SESSION['id_an'] = $id_an;
       $position = $row['poste'];
       $localisation = $row['localisation'];
       $date_deb = $row['date_deb'];
@@ -56,6 +80,7 @@ if (isset($_POST['submit'])) {
       $competences = $row['competences'];
       $description = $row['description'];
       $entreprise = $row['entreprise'];
+      $nb = $row['nombre_vues'];
       echo '
   <article class="entry">
 
@@ -71,16 +96,20 @@ if (isset($_POST['submit'])) {
         echo '
       <li class="d-flex align-items-center"><i class="bi bi-building"></i>' . $entreprise . '</li>';
       }
+      echo ' <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time datetime="2020-01-01">' . $date_depot . '</time></li>';
       if (isset($_SESSION['type'])) {
-        if ($_SESSION['type'] == 'student'){
-         echo' <form action="" method="POST">
+        if ($_SESSION['type'] == 'student') {
+          echo ' <form action="favourite_announce.php" method="POST">
           <button type="submit" name="fav" class="btn"><i class="bi bi-heart  "></i></button>
-        </form>';
-        }}
+        </form>
+        <li class="d-flex align-items-center"><i class="bi bi-people"></i>'.$nb.' Students are intersted</li>';
+        
+        }
+      }
       echo '
      
-      <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time datetime="2020-01-01">' . $date_depot . '</time></li>
-      <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+     
+     
     </ul>
   </div>
 
@@ -190,93 +219,58 @@ if (isset($_POST['submit'])) {
    
  });
  </script>
-</div><!-- End blog entries list -->
+ </div><!-- End blog entries list -->
 
-<div class="col-lg-4">
-
-<div class="sidebar">
-
-<h3 class="sidebar-title">Search</h3>
-<div class="sidebar-item search-form">
-  <form action="" method="POST">
-    <input type="text" name="search">
-    <button type="submit" name="submit"><i class="bi bi-search"></i></button>
-  </form>
-</div><!-- End sidebar search formn-->
-
-<h3 class="sidebar-title">Categories</h3>
-<div class="sidebar-item categories">
-  <ul>
-    <li><a href="#">Summer Job <span>(25)</span></a></li>
-    <li><a href="#">Part Time <span>(12)</span></a></li>
-    <li><a href="#">Weekend Job <span>(5)</span></a></li>
-    <li><a href="#">Evening Job <span>(22)</span></a></li>
-    <li><a href="#">Work From Home <span>(8)</span></a></li>
-    <li><a href="#">Internship <span>(14)</span></a></li>
-    <li><a href="#">Graduate Job <span>(14)</span></a></li>
-  </ul>
-</div><!-- End sidebar categories-->
-
-<h3 class="sidebar-title">Recent Posts</h3>
-<div class="sidebar-item recent-posts">
-  <div class="post-item clearfix">
-    <img src="assets/img/blog/blog-recent-1.jpg" alt="">
-    <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
-    <time datetime="2020-01-01">Jan 1, 2020</time>
-  </div>
-
-  <div class="post-item clearfix">
-    <img src="assets/img/blog/blog-recent-2.jpg" alt="">
-    <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-    <time datetime="2020-01-01">Jan 1, 2020</time>
-  </div>
-
-  <div class="post-item clearfix">
-    <img src="assets/img/blog/blog-recent-3.jpg" alt="">
-    <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-    <time datetime="2020-01-01">Jan 1, 2020</time>
-  </div>
-
-  <div class="post-item clearfix">
-    <img src="assets/img/blog/blog-recent-4.jpg" alt="">
-    <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
-    <time datetime="2020-01-01">Jan 1, 2020</time>
-  </div>
-
-  <div class="post-item clearfix">
-    <img src="assets/img/blog/blog-recent-5.jpg" alt="">
-    <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
-    <time datetime="2020-01-01">Jan 1, 2020</time>
-  </div>
-
-</div><!-- End sidebar recent posts-->
-
-<h3 class="sidebar-title">Tags</h3>
-<div class="sidebar-item tags">
-  <ul>
-    <li><a href="#">App</a></li>
-    <li><a href="#">IT</a></li>
-    <li><a href="#">Business</a></li>
-    <li><a href="#">Mac</a></li>
-    <li><a href="#">Design</a></li>
-    <li><a href="#">Office</a></li>
-    <li><a href="#">Creative</a></li>
-    <li><a href="#">Studio</a></li>
-    <li><a href="#">Smart</a></li>
-    <li><a href="#">Tips</a></li>
-    <li><a href="#">Marketing</a></li>
-  </ul>
-</div><!-- End sidebar tags-->
-
-</div><!-- End sidebar -->
-
-</div><!-- End blog sidebar -->
-
-</div>
-
-</div>
-</section><!-- End Blog Section -->';
+ <div class="col-lg-4">
+ 
+ <div class="sidebar">
+ 
+ <h3 class="sidebar-title">Search</h3>
+ <div class="sidebar-item search-form">
+   <form action="" method="POST">
+     <input type="text" name="search">
+     <button type="submit" name="submit"><i class="bi bi-search"></i></button>
+   </form>
+ </div><!-- End sidebar search formn-->
+ 
+ <h3 class="sidebar-title">Types</h3>
+ <div class="sidebar-item categories">
+   <ul>
+     <li><form  action="" method="GET">
+      <input type="submit"  name="summer"  class="text-muted btn btn-light" value="Summer Job">
+       </form></li>
+       <li> <form  action="" method="GET">
+      <input type="submit"  name="partTime"  class="text-muted btn btn-light" value="Part Time">
+       </form></li>
+       <li>   <form  action="" method="GET">
+      <input type="submit"  name="weekend"  class="text-muted btn btn-light" value="Weekend Job ">
+       </form></li>
+       <li>  <form  action="" method="GET">
+      <input type="submit"  name="evening"  class="text-muted btn btn-light" value="Evening Job">
+       </form></li>
+       <li> <form  action="" method="GET">
+      <input type="submit"  name="home"  class="text-muted btn btn-light" value="Work From Home">
+       </form></li>
+       <form  action="" method="GET">
+      <input type="submit"  name="internship"  class="text-muted btn btn-light" value="Internship">
+       </form></li>
+       <li> <form  action="" method="GET">
+       <input type="submit"  name="graduate"  class="text-muted btn btn-light" value="Graduate Job">
+       </form></li>
+     </ul>
+ </div><!-- End sidebar categories-->
+ 
+ 
+ </div><!-- End sidebar -->
+ 
+ </div><!-- End blog sidebar -->
+ 
+ </div>
+ 
+ </div>
+ </section><!-- End Blog Section -->';
   } else {
     echo 'search_query error: ' . mysqli_error($conn);
   }
   ?>
+  <?php include('components/footer.php'); ?>

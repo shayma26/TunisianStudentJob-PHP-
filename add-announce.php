@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         echo "Sorry, only image files are allowed.";
     } else {
         //create sql
-        $sql2 = "INSERT INTO annonce VALUES(null,'$start_date','$end_date','$location',' $position', '$description','$type','$skills','$salaire','$id','$email','$num_contact','$img',CURRENT_TIMESTAMP(),'$entreprise'
+        $sql2 = "INSERT INTO annonce VALUES(null,'$start_date','$end_date','$location',' $position', '$description','$type','$skills','$salaire','$id','$email','$num_contact','$img',CURRENT_TIMESTAMP(),'$entreprise',0
             )";
 
         //save to DB and check

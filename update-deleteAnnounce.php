@@ -3,19 +3,7 @@
 //connect to database
 include('config/db_connect.php');
 
-//submit verification
-if (isset($_POST['delete']) && isset($_SESSION['id'])) {
-    $id=$_SESSION['id'];
-    $sql="DELETE FROM  annonce WHERE id_an=$id";
-    if ($res = mysqli_query($conn, $sql)) {
-        echo' announce '.$id.'deleted successfully';
-       header('location:http://localhost/myProject/employer-announces.php');
-        unset($_SESSION['id']);
-    }
-    else {
-        echo 'delete_query error: ' . mysqli_error($conn);
-      }
-}
+/*******delete employer announce****** */
 if (isset($_POST['delete']) && isset($_SESSION['id'])) {
     $id=$_SESSION['id'];
     $sql="DELETE FROM  annonce WHERE id_an=$id";
@@ -29,6 +17,7 @@ if (isset($_POST['delete']) && isset($_SESSION['id'])) {
       }
 }
 
+/*******update employer announce****** */
 if(isset($_POST['submit']))
 {   $id = $_SESSION['id'];
     $position = $_POST['position'];
@@ -46,5 +35,23 @@ if(isset($_POST['submit']))
         echo 'update_query error: ' . mysqli_error($conn);
     }
 }
+/*******delete student announce from favourites****** */
+if (isset($_POST['delete_fav']) && isset($_SESSION['id'])) {
+    $id=$_SESSION['id'];
+    $id_et=$_SESSION['id_et'];
+    $sql="DELETE FROM  favoris WHERE id_an=$id AND id_et=$id_et";
+    $sql3="UPDATE annonce SET nombre_vues=nombre_vues-1 WHERE id_an=$id";
+    
+    if ($res = mysqli_query($conn, $sql)) {
+        if ($res3 = mysqli_query($conn, $sql3))
+       {// echo' announce '.$id.'deleted successfully';
+       header('location:http://localhost/myProject/favourite-announces.php');
+        unset($_SESSION['id']);}
+    }
+    else {
+        echo 'delete_query error: ' . mysqli_error($conn);
+      }
+}
+
 
 ?>
