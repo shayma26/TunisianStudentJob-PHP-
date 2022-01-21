@@ -1,7 +1,4 @@
-<?php include('components/header.php'); 
-    
-
-?>
+<?php include('components/header.php');?>
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->

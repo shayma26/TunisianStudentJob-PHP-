@@ -65,10 +65,11 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="signup.php">Sign up</a></li>
-         <!-- <li><a href="portfolio.html">Portfolio</a></li>
+         <li><a href="portfolio.html">Portfolio</a></li>
          <li><a href="team.html">Team</a></li>
-          <li><a href="pricing.html">Pricing</a></li>-->
+          <li><a href="pricing.html">Pricing</a></li>
           <li><a href="blog.html">Blog</a></li>
+          <li><a href="profile.php">Profile</a></li>
          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
