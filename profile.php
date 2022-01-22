@@ -30,9 +30,9 @@
           $city=$row['ville_et'];
           $skills=explode(",",$row['competences_et']);
           if($row['genre_et']==0)
-            {$profileimg='images/female_avatar.png';}
+            {$profileimg='images/female_avatar.jpg';}
           else
-            {$profileimg='images/male_avatar.png';}
+            {$profileimg='images/male_avatar.jpg';}
         }
         else{
           $inforeq = "SELECT * from employeur where email_em = '$email'";

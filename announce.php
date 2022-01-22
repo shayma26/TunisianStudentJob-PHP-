@@ -267,7 +267,7 @@ include('components/login-check.php');
        </div>
        </section><!-- End Blog Section -->';
      } else {
-      echo "<center><h3>No Announcements yet</h3></center>";
+      echo '<center><h3>No Announcements yet</h3></center>';
     }
     ?>
     <?php include('components/footer.php'); ?>

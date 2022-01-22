@@ -74,7 +74,7 @@
             $count = mysqli_num_rows($res);
 
             if($count==1){
-                $_SESSION['companyExist'] = "<div class=\"alert alert-danger\" role=\"alert\">Please enter a valid company name</div>";
+                $_SESSION['companyExist'] = "<div class=\"alert alert-danger\" role=\"alert\">Company name is already existed</div>";
                 header('location:'.SITEURL.'signup.php');
             }
             else{
