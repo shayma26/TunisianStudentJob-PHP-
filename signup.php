@@ -70,12 +70,12 @@
 
                 <div class="col-md-6">
                     <label for="birthdate" class="form-label">Birth-date</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthdate" min="1930-01-01" max="2010-01-01" required>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" min="1930-01-01" max="2010-01-01" title="Please enter a valid birthdate" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="phone" class="form-label">Phone number</label>
-                    <input type="number" class="form-control" id="phone" name="phone" pattern="[1-9]{8}" title="Please enter a valid phone number" required>
+                    <input type="number" class="form-control" id="phone" name="phone" required pattern="[1-9]{8}" title="Please enter a valid phone number" >
                 </div>
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>

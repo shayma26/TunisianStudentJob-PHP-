@@ -78,8 +78,6 @@ annonce
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="signup.php">Sign up</a></li>
-          <li><a href="signin.php">Sign in</a></li>
           <?php
           if(isset($_SESSION['user'])){
             echo '          
@@ -90,6 +88,11 @@ annonce
             <li><a href="blog.html">Blog</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="logout.php">Log out</a></li>
+            ';
+          }else{
+            echo '
+              <li><a href="signup.php">Sign up</a></li>
+              <li><a href="signin.php">Sign in</a></li>
             ';
           }
           ?>
