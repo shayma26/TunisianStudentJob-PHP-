@@ -59,17 +59,32 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center" style="display: block;
-  margin-left: auto;
-  margin-right: auto;">
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center" 
+          style="display: block;
+                margin-left: auto;
+                margin-right: auto;">
             <div class="member" >
-              <img src= "<?php echo $profileimg?>" alt="" width="200">
+              <img src= "<?php echo $profileimg?>" alt="" width="250">
               <h4><?php echo $fullname ?></h4>
               <span><?php echo $description ?></span>
               <p>
                 bio to add
               </p>
-              <table style="text-align: left;table-layout: auto; white-space: pre;">
+              <style type="text/css">
+                table{
+                  text-align: left;
+                  table-layout: auto; 
+        overflow: auto;
+                }
+                th{
+                  white-space: pre;
+                }
+                td{
+                  white-spece: normal ;
+
+                }
+              </style>
+              <table style="max-width: 50%;">
 
                 <tr>
                   <th>E-mail : </th>
@@ -85,10 +100,10 @@
                 </tr>
                 <?php if($type == 'student'){
                   echo '
-                  <tr>
+                  <tr style="">
                       <th>Skills : </th>';
                       foreach($skills as $skill){
-                        echo '<td><span class="badge rounded-pill bg-info text-dark" style="background-color: #000000">'.$skill.'</span></td>';
+                        echo '<td><span class="badge rounded-pill bg-info">'.$skill.'</span></td><td><span class="badge rounded-pill bg-info">'.$skill.'</span></td>';
                       }
                       echo '</tr>';
                 }else{
