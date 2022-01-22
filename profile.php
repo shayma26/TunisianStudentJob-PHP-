@@ -14,20 +14,97 @@
       </div>
     </section><!-- End Breadcrumbs -->
 
+    <?php
+      if(isset($_SESSION['type'])){
+        $email=$_SESSION['user'];
+        $type=$_SESSION['type'];
+        if ($type == 'student') {
+          $inforeq = "SELECT * from etudiant where email_et = '$email'";
+          $resinfo = mysqli_query($conn, $inforeq);
+          $row = mysqli_fetch_assoc($resinfo);
+          $fullname = $row['prenom_et']." ".$row['nom_et'];
+          $description="Student at ".$row['institut_et']."<br>".$row['specialite_et']." <br>LEVEL: ".$row['niveau_et'];
+          $phonenumber=$row['num_et'];
+          $city=$row['ville_et'];
+          $skills=explode(",",$row['competences_et']);
+          if($row['genre_et']==0)
+            {$profileimg='images/female_avatar.png';}
+          else
+            {$profileimg='images/male_avatar.png';}
+        }
+        else{
+          $inforeq = "SELECT * from employeur where email_em = '$email'";
+          $resinfo = mysqli_query($conn, $inforeq);
+          $row = mysqli_fetch_assoc($resinfo);
+          $fullname = $row['prenom_em']." ".$row['nom_em'];
+          $phonenumber=$row['num_em'];
+          $city=$row['ville_em'];
+          $website=$row['site_web'];
+          if($row['entreprise']=="")
+            {$description="Employer";}
+          else
+            {$description="Works at ".$row['entreprise'];}
+            if ($row['logo']=="")
+              {$profileimg="images/office.png";}
+            else
+              {$profileimg="images/".$row['logo'];}
+        }
+        
+      }
+     ?>
+
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
       <div class="container">
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="assets/img/team/team-2.jpg" alt="">
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center" style="display: block;
+  margin-left: auto;
+  margin-right: auto;">
+            <div class="member" >
+              <img src= "<?php echo $profileimg?>" alt="" width="200">
+              <h4><?php echo $fullname ?></h4>
+              <span><?php echo $description ?></span>
               <p>
-                Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                bio to add
               </p>
+              <table style="text-align: left;table-layout: auto; white-space: pre;">
+
+                <tr>
+                  <th>E-mail : </th>
+                  <td><?php echo $email; ?></td>
+                </tr>
+                <tr>
+                  <th>Phone number : </th>
+                  <td><?php echo $phonenumber; ?></td>
+                </tr>
+                <tr>
+                  <th>City : </th>
+                  <td><?php echo $city; ?></td>
+                </tr>
+                <?php if($type == 'student'){
+                  echo '
+                  <tr>
+                      <th>Skills : </th>';
+                      foreach($skills as $skill){
+                        echo '<td><span class="badge rounded-pill bg-info text-dark" style="background-color: #000000">'.$skill.'</span></td>';
+                      }
+                      echo '</tr>';
+                }else{
+                  echo '
+                     <tr>
+                      <th>Website : </th>
+                      <td>'.$website.'</td>
+                    </tr>
+                  
+                    ';
+                } ?>
+                    
+                    
+                   
+                  
+              </table>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>

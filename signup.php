@@ -42,11 +42,11 @@
             <form class="row g-3" method="POST" action="register.php" id="signup_form" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <label for="fname" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="inputfname" name="fname" required>
+                    <input type="text" class="form-control" id="inputfname" name="fname" minlength="3" required>
                 </div>
                 <div class="col-md-6">
                     <label for="lname" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="inputlname" name="lname" required>
+                    <input type="text" class="form-control" id="inputlname" name="lname" minlength="2" required>
                 </div>
 
                 <div class="col-md-6">
@@ -70,12 +70,12 @@
 
                 <div class="col-md-6">
                     <label for="birthdate" class="form-label">Birth-date</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" min="1930-01-01" max="2010-01-01" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="phone" class="form-label">Phone number</label>
-                    <input type="number" class="form-control" id="phone" name="phone" size="6" required>
+                    <input type="number" class="form-control" id="phone" name="phone" pattern="[1-9]{8}" title="Please enter a valid phone number" required>
                 </div>
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="col-md-2">
                     <label for="zip" class="form-label">Zip</label>
-                    <input type="number" class="form-control" id="zip" name="zip" required>
+                    <input type="number" class="form-control" id="zip" name="zip" min="1" required>
                 </div>
                 <div class="form-check-inline">
                     <legend class="col-form-label col-md-4">Are you</legend>
@@ -201,7 +201,7 @@
             $("#institute").change(function() {
                 var val = $(this).val();
                 if (val == "issatso") {
-                    var specialities=['Cycle préparatoire integré','Formation d\'ingénieur','Licence en Génie Mécanique','Licence en Génie Civil','Licence en Electromécanique','Licence en Génie Énergétique','Licence en Sciences de l\'Informatique','Licence en Ingénierie des Systèmes de l\'Informatique','Licence en EEA','Mastère Professionnel En Génie Mécanique','Mastère Professionnel En Energétique'];
+                    var specialities=['Cycle préparatoire integré','Formation ingénieur','Licence en Génie Mécanique','Licence en Génie Civil','Licence en Electromécanique','Licence en Génie Énergétique','Licence en Sciences de l Informatique','Licence en Ingénierie des Systèmes de l\'Informatique','Licence en EEA','Mastère Professionnel En Génie Mécanique','Mastère Professionnel En Energétique'];
                     var myList = '';
                     for (var i = 0; i < specialities.length; i++) {
                     myList += "<option value='"+specialities[i]+"'>"+specialities[i]+"</option>";} 
