@@ -251,35 +251,35 @@
     <label for="skills" class="col-form-label col-md-12">Skills</label>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="webprog" value="webprog" name="skills[]">
-        <label class="form-check-label" for="webprog">Web Programming</label>
+        <label class="form-check-label" for="Web Programming">Web Programming</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="mobileprog" value="mobileprog" name="skills[]">
-        <label class="form-check-label" for="mobileprog">Mobile Programming</label>
+        <label class="form-check-label" for="Mobile Programming">Mobile Programming</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="cooking" value="cooking" name="skills[]">
-        <label class="form-check-label" for="cooking">Cooking</label>
+        <label class="form-check-label" for="Cooking">Cooking</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="babysitting" value="babysitting" name="skills[]">
-        <label class="form-check-label" for="babysitting">Baby sitting</label>
+        <label class="form-check-label" for="Baby Sitting">Baby sitting</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="teaching" value="teaching" name="skills[]">
-        <label class="form-check-label" for="teaching">Teaching</label>
+        <label class="form-check-label" for="Teaching">Teaching</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="driving" value="driving" name="skills[]">
-        <label class="form-check-label" for="driving">Driving</label>
+        <label class="form-check-label" for="Driving">Driving</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="nursing" value="nursing" name="skills[]">
-        <label class="form-check-label" for="nursing">Nursing</label>
+        <label class="form-check-label" for="Nursing">Nursing</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="guiding" value="guiding" name="skills[]">
-        <label class="form-check-label" for="guiding">Guiding</label>
+        <label class="form-check-label" for="Guiding">Guiding</label>
     </div>
 </div>
 
