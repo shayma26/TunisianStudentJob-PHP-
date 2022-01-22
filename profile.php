@@ -1,4 +1,6 @@
-<?php include('components/header.php');?>
+<?php include('components/header.php');
+    include('components/login-check.php');
+?>
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->

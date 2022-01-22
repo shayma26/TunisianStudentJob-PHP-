@@ -1,4 +1,6 @@
-<?php include('config/constants.php');?>
+<?php 
+  include('config/constants.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +27,18 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <script src=
-    "https://code.jquery.com/jquery-1.12.4.min.js">
+  "https://code.jquery.com/jquery-1.12.4.min.js">
 </script>
 <style type="text/css">
-    .select{
-        display: none;
-    }
+  .select{
+    display: none;
+  }
 </style>
 
 
 </head>
 <body>
-<section id="topbar" class="d-flex align-items-center">
+  <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">info@Studentjob.tn</a></i>
@@ -63,31 +65,20 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="about.html">About</a></li>
           <li><a href="signup.php">Sign up</a></li>
-         <li><a href="portfolio.html">Portfolio</a></li>
-         <li><a href="team.html">Team</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="profile.php">Profile</a></li>
-         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>-->
-          <li><a href="contact.html">Contact</a></li>
+          <?php
+          if(isset($_SESSION['user'])){
+            echo '          
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="logout.php">Log out</a></li>
+            ';
+          }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

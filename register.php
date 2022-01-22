@@ -95,7 +95,7 @@
                 // Save to DB and check
                     if(mysqli_query($conn, $sql)){
                         $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
-                        $_SESSION['user'] = $email;
+                    $_SESSION['user'] = $email;
                     $_SESSION['username'] = $fname;
                     $_SESSION['type'] = 'employer';
                     header('location: '.SITEURL);

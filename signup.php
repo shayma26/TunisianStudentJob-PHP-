@@ -303,9 +303,12 @@
 
 </div><!--Employer select END-->
 
-
+<div class="row" style="padding-top: 20px;">
+            <p class="col-md-auto">You have already an account?</p>
+            <a class="col-md-auto" href="signin.php">Sign in</a>
+        </div>
 <div class="col-12">
-    <button type="submit" class="btn btn-primary" name="submit" >Sign up</button>
+    <button type="submit" class="btn btn-primary" name="submit">Sign up</button>
 
     <!--Make one skill at least checked-->
     <script type="text/javascript">
@@ -323,7 +326,7 @@
 </div>
 </section><!-- End Register Form -->
 
-<!-- ======= Our Skills Section ======= -->
+<!-- ======= Our Skills Section ======= 
 <section id="skills" class="skills">
     <div class="container">
 
@@ -385,7 +388,7 @@
         </div>
 
     </div>
-</section><!-- End Our Skills Section -->
+</section><!-- End Our Skills Section -->-->
 
 </main><!-- End #main -->
 
