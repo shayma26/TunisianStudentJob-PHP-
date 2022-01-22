@@ -1,7 +1,7 @@
 <?php
 
 //connect to database
-include('config/db_connect.php');
+include('config/constants.php');
 
 //submit verification
 if (isset($_POST['submit'])) {

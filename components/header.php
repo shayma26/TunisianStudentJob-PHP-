@@ -71,8 +71,6 @@ annonce
 
       <div class="logo">
         <h1><a href="index.php">Tunisian Student Job</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -83,6 +81,7 @@ annonce
             echo '          
             <li><a href="about.html">About</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="announce.php">Announcements</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="pricing.html">Pricing</a></li>
             <li><a href="blog.html">Blog</a></li>
