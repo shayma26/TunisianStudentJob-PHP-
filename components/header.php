@@ -51,9 +51,6 @@ annonce
 </head>
 
 <body>
-  <?php
-  include('config/db_connect.php');
-  ?>
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -82,6 +79,7 @@ annonce
         <ul>
           <li><a href="index.php">Home</a></li>
           <li><a href="signup.php">Sign up</a></li>
+          <li><a href="signin.php">Sign in</a></li>
           <?php
           if(isset($_SESSION['user'])){
             echo '          
