@@ -269,7 +269,7 @@
  </div>
  </section><!-- End Blog Section -->';
   } else {
-    echo 'search_query error: ' . mysqli_error($conn);
+    echo '<center><h3>No Announces yet</h3></center>';
   }
   ?>
   <?php include('components/footer.php'); ?>
