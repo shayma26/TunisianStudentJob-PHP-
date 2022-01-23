@@ -81,7 +81,7 @@ annonce
             echo '          
             <li><a href="about.html">About</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="announce.php">Announcements</a></li>
+            <li><a href="announce.php">Announces</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="pricing.html">Pricing</a></li>
             <li><a href="blog.html">Blog</a></li>

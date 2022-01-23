@@ -1,12 +1,12 @@
 <?php
 
 //connect to database
-include('config/db_connect.php');
+include('config/constants.php');
 
 //submit verification
 if (isset($_POST['fav'])) {
     $id_an=$_SESSION['id_an'];
- $email=$_SESSION['user'];
+    $email=$_SESSION['user'];
     $sql = "SELECT id_et FROM etudiant WHERE email_et='$email'";
     if ($res = mysqli_query($conn, $sql)) {
         $row = mysqli_fetch_assoc($res);
@@ -24,6 +24,6 @@ if (isset($_POST['fav'])) {
         echo 'insert_query error:ooops ' . mysqli_error($conn);
     }
 
-    } 
-    
+} 
+
 

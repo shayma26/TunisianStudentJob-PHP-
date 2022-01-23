@@ -48,7 +48,8 @@ if (isset($_POST['submit'])) {
             } else {
                 echo "Failed to upload image";
             }
-            header('location:' . 'http://localhost/myProject');
+            $_SESSION['add-announce']= '<div class="alert alert-success" role="alert">Announce added successfully</div>';
+            header('location:' . 'http://localhost/myProject/announce.php');
         } else {
             echo 'insert_query error: ' . mysqli_error($conn);
         }

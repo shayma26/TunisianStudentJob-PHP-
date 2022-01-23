@@ -1,5 +1,6 @@
 <?php include('components/header.php');
     include('components/login-check.php');
+    //TODO delete, settings
 ?>
   <main id="main">
 
