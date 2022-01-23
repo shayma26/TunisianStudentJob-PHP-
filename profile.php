@@ -29,6 +29,7 @@ include('components/login-check.php');
       $description="Student at ".strtoupper($row['institut_et'])."<br>".$row['specialite_et']." <br>LEVEL: ".$row['niveau_et'];
       $phonenumber=$row['num_et'];
       $city=$row['ville_et'];
+      $bio=$row['bio_et'];
       $skills=explode(",",$row['competences_et']);
       if($row['genre_et']==0)
         {$profileimg='images/female_avatar.jpg';}
@@ -43,6 +44,7 @@ include('components/login-check.php');
       $phonenumber=$row['num_em'];
       $city=$row['ville_em'];
       $website=$row['site_web'];
+      $bio=$row['bio_em'];
       if($row['entreprise']=="")
         {$description="Employer";}
       else
@@ -70,67 +72,95 @@ include('components/login-check.php');
           <img src= "<?php echo $profileimg?>" alt="" width="250">
           <h4><?php echo $fullname ?></h4>
           <span><?php echo $description ?></span>
-          <p>
-            bio to add
-          </p>
+          <script>
+            function change_bio() {
+              if(document.getElementById("bio").value=="Say something about you..."){
+                document.getElementById("bio").value="";
+              }
+              document.getElementById("bio").readOnly = false;
+              
+            }
+          </script>
           <style type="text/css">
-            .row{
-              text-align: left;
+            textarea{
+              border: none;
+              resize: none;
+              width: 500px;      
+              font-size: 14px; 
+              text-align: center;
+            }
+            textarea:focus{
+              outline: none;
+              border: 0.5px solid gray;
+              font-size: 16px; 
             }
           </style>
-          <div class="row">
-            <div class="col-sm">
-              <h6><b> E-mail :</b></h6>
-            </div>
-            <div class="col-sm">
-              <?php echo $email; ?>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
-              <h6><b>Phone number : </b></h6>
-            </div>
-            <div class="col-sm">
-              <?php echo $phonenumber; ?>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
+  <?php if ($bio==null){
+    echo '<textarea rows="2" id="bio" onclick="change_bio()" maxlength="255" readonly>Say something about you...</textarea>';
+  }
+  else{
+    echo '<textarea rows="2" id="bio" onclick="change_bio()" maxlength="255" readonly>'.$bio.'</textarea>';
+  }?>
+  <div id="setbio"></div>
 
-              <h6><b>City : </b></h6>
-            </div>
-            <div class="col-sm">
-              <?php echo $city; ?></div>
-            </div>
-            <?php if($type == 'student'){
-              echo '
-              <div class="row">
-              <div class="col-sm">
-              <h6><b>Skills : </b></h6>
-              </div>
-              <div class="col-sm">';
-              foreach($skills as $skill){
-                echo '<span class="badge rounded-pill bg-success" style="margin: 1px; width:100px;">'.$skill.'</span>';
-              }
-              echo '
-              </div>
-              </div>';
-            }else{
-              echo '
-              <div class="row">
-              <div class="col-sm">
-
-              <h6><b>Website : </b></h6></div>
-              <div class="col-sm">
-              '.$website.'</div>
-              </div>';
-            } ?>
-          </div>
-        </div>
-      </div>
-
+  <style type="text/css">
+    .row{
+      text-align: left;
+    }
+  </style>
+  <div class="row">
+    <div class="col-sm">
+      <h6><b> E-mail :</b></h6>
     </div>
-  </section><!-- End Team Section -->
+    <div class="col-sm">
+      <?php echo $email; ?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <h6><b>Phone number : </b></h6>
+    </div>
+    <div class="col-sm">
+      <?php echo $phonenumber; ?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+
+      <h6><b>City : </b></h6>
+    </div>
+    <div class="col-sm">
+      <?php echo $city; ?></div>
+    </div>
+    <?php if($type == 'student'){
+      echo '
+      <div class="row">
+      <div class="col-sm">
+      <h6><b>Skills : </b></h6>
+      </div>
+      <div class="col-sm">';
+      foreach($skills as $skill){
+        echo '<span class="badge rounded-pill bg-success" style="margin: 1px; width:100px;">'.$skill.'</span>';
+      }
+      echo '
+      </div>
+      </div>';
+    }else{
+      echo '
+      <div class="row">
+      <div class="col-sm">
+
+      <h6><b>Website : </b></h6></div>
+      <div class="col-sm">
+      '.$website.'</div>
+      </div>';
+    } ?>
+  </div>
+</div>
+</div>
+
+</div>
+</section><!-- End Team Section -->
 
 </main><!-- End #main -->
 

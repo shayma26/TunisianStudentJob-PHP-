@@ -51,7 +51,7 @@
                 $skills = implode(",", $_POST['skills']);
 
                 // Create sql
-                $sql = "INSERT INTO etudiant VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$university','$institute','$speciality','$level','$skills')";
+                $sql = "INSERT INTO etudiant VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$university','$institute','$speciality','$level','$skills',null)";
 
                 // Save to DB and check
                 if(mysqli_query($conn, $sql)){
@@ -90,7 +90,7 @@
                     header('location:'.SITEURL.'signup.php');
                 }else{
                 // Insertion request
-                    $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo')";
+                    $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo',null)";
 
                 // Save to DB and check
                     if(mysqli_query($conn, $sql)){
