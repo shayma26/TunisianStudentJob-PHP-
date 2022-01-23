@@ -81,12 +81,12 @@ include('components/login-check.php');
         $num_contact = $row['num_contact'];
         $image = $row['image'];
         $type = $row['type'];
-        $competences = $row['competences'];
+        $competences = explode(",",$row['competences']);
         $description = $row['description'];
         $entreprise = $row['entreprise'];
         $nb = $row['nombre_vues'];
         echo '
-        <article class="entry" style="width:80%;">
+        <article class="entry" style="width:70%;">
 
         <div class="entry-img">
         <img src="images/' . $image . '" alt="" class="img-fluid">
@@ -119,7 +119,7 @@ include('components/login-check.php');
         <div class="container toggle-text">
         <div class="row">
         <div class="col-sm">
-        <h5> date debut:</h5>
+        <h6> date debut:</h6>
         </div>
         <div class="col-sm">
         ' . $date_deb . '
@@ -128,7 +128,7 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> date fin:</h5>
+        <h6> date fin:</h6>
         </div>
         <div class="col-sm">
         ' . $date_fin . '
@@ -137,7 +137,7 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> localisation:</h5>
+        <h6> localisation:</h6>
         </div>
         <div class="col-sm">
         ' . $localisation . '
@@ -145,7 +145,7 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> salaire</h5>
+        <h6> salaire</h6>
         </div>
         <div class="col-sm">
         ' . $salaire . 'DT
@@ -153,7 +153,7 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> email:</h5>
+        <h6> email:</h6>
         </div>
         <div class="col-sm">
         ' . $email_contact . '
@@ -161,7 +161,7 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> numero:</h5>
+        <h6> numero:</h6>
         </div>
         <div class="col-sm">
         ' . $num_contact . '
@@ -169,7 +169,7 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> type:</h5>
+        <h6> type:</h6>
         </div>
         <div class="col-sm">
         ' . $type . '
@@ -177,15 +177,16 @@ include('components/login-check.php');
         </div>
         <div class="row">
         <div class="col-sm">
-        <h5> competences:</h5>
+        <h6> competences:</h6>
         </div>
-        <div class="col-sm">
-        ' . $competences . '
+        <div class="col-sm">';
+        foreach($competences as $competence){
+          echo '<span class="badge rounded-pill bg-success" style="margin: 1px;">'.$competence.'</span>';
+        }
+        echo '
         </div>
         </div>
         </div>
-
-
         <div class="read-more toggle-text-button"><a>Read More</a></div>
         </div>
 
