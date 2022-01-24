@@ -4,8 +4,8 @@ include('components/login-check.php');
 
 if(isset($_POST['update']))
 {
-    
-              
+    $id=$_SESSION['id'];
+
     $type = $_SESSION['type'];
     $newfname = $_POST['fname'];
 	$newlname = $_POST['lname'];
@@ -22,6 +22,7 @@ if(isset($_POST['update']))
         $newinstitute=$_POST['institute'];
         $newspeciality=$_POST['speciality'];
         $newlevel=$_POST['level'];
+        $oldskills=$_SESSION['oldskills'];
         if(isset($_POST['skills'])){
             $newskills=implode(",",$_POST['skills']);
         }else{
@@ -30,16 +31,16 @@ if(isset($_POST['update']))
         
 
                 // Create sql
-                $sql = "UPDATE etudiant SET nom_et='$newlname',prenom_et='$newfname',email_et='$newemail', mdp_et='$newpsd',num_et='$newphone',dn='$newbirthdate',ville_et='$newcity',adr_et='$newaddress',code_postale_et='$newzip',universite_et='$newuniversity',institut_et='$newinstitute',specialite_et='$newspeciality',niveau_et='$newlevel',competences_et='$newskills' WHERE id_et='$id_et')";
+                $sql = "UPDATE etudiant SET nom_et='$newlname',prenom_et='$newfname',email_et='$newemail', mdp_et='$newpsd',num_et='$newphone',dn_et='$newbirthdate',ville_et='$newcity',adr_et='$newaddress',code_postale_et='$newzip',universite_et='$newuniversity',institut_et='$newinstitute',specialite_et='$newspeciality',niveau_et='$newlevel',competences_et='$newskills' WHERE id_et='$id'";
 
                 // Save to DB and check
                 if(mysqli_query($conn, $sql)){
-                    $_SESSION['updateSuccess'] = '<div class="alert alert-success" role="alert">User apdated successfully</div>';
-                    $_SESSION['user'] = $email;
-                    $_SESSION['username'] = $fname;
-                    header('location: '.SITEURL);
+                    $_SESSION['updateSuccess'] = '<div class="alert alert-success" role="alert">User updated successfully</div>';
+                    $_SESSION['user'] = $newemail;
+                    $_SESSION['username'] = $newfname;
+                    header('location: '.SITEURL.'profile.php');
                 }else{
-                    echo 'query error: '.mysqli_error($conn);
+                    echo 'query errorrr: '.mysqli_error($conn);
                 }
         } else{// type=employer
 
@@ -70,7 +71,7 @@ if(isset($_POST['update']))
                  header('location:'.SITEURL.'signup.php');
              }else{
                 // Insertion request
-                $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo',null)";
+                $sql = "UPDATE employeur SET nom_em='$newlname',prenom_em='$newfname',email_em='$newemail', mdp_em='$newpsd',num_em='$newphone',dn_em='$newbirthdate',ville_em='$newcity',adr_em='$newaddress',code_postale_em='$newzip', entreprise='$newcompany',site_web='$newwebsite', logo='$newlogo' WHERE id_em='$id'";
 
                 // Save to DB and check
                 if(mysqli_query($conn, $sql)){

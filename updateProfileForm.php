@@ -20,6 +20,7 @@ include('components/login-check.php');
 		if (isset($_POST['goupdate'])) {
 			$oldemail = $_SESSION['user'];
 			$type = $_SESSION['type'];
+
 			if ($type == 'student') {
 				$inforeq = "SELECT * from etudiant where email_et = '$oldemail'";
 				$resinfo = mysqli_query($conn, $inforeq);
@@ -37,7 +38,8 @@ include('components/login-check.php');
 				$oldinstitute=$row['institut_et'];
 				$oldspeciality=$row['specialite_et'];
 				$oldlevel=$row['niveau_et'];
-                $oldskills=explode(",",$row['competences_et']);
+                $oldskills=$row['competences_et'];
+                $_SESSION['oldskills']=$oldskills;
                 $oldmdp=$row['mdp_et'];
             }
             else{
@@ -59,6 +61,7 @@ include('components/login-check.php');
                 $oldmdp=$row['mdp_em'];
 
             }
+            $_SESSION['id']=$id;
         }
 
         ?>
