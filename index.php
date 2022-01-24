@@ -9,7 +9,7 @@
         echo $_SESSION['no-login-message'];
         unset($_SESSION['no-login-message']);
     }
-       
+
     ?>
   <!-- ======= Hero Section ======= -->
  
@@ -22,12 +22,12 @@
         <div class="carousel-inner" role="listbox">
 
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background: url(assets/img/slide/slide-1.jpg)">
+          <div class="carousel-item active" style="background: url(assets/img/about.jpg)">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tunisian Student Job</span></h2>
                 <h3 class="animate__animated animate__fadeInUp">The first platform for tunisian students and employees</h3>
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+                <a href="about.php" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
           </div>
@@ -36,20 +36,20 @@
           <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated fanimate__adeInDown">Lorem <span>Ipsum Dolor</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+                <h2 class="animate__animated fanimate__adeInDown">Register <span> Now</span></h2>
+                <p class="animate__animated animate__fadeInUp">Are you looking for a job? We have a range of jobs perfect for you. Register with Tunisian StudentJob and start your job search today!</p>
+                <a href="signup.php" class="btn-get-started animate__animated animate__fadeInUp">Register</a>
               </div>
             </div>
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background: url(assets/img/slide/slide-3.jpg)">
+          <div class="carousel-item" style="background: url(assets/img/slide/slide-1.jpg)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Sequi ea <span>Dime Lara</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+                <h2 class="animate__animated animate__fadeInDown">Are you an <span>employer?</span></h2>
+                <p class="animate__animated animate__fadeInUp">Our focus is on connecting students to your business quickly and effectively. Place an announce on Tunisian StudentJob today and find your perfect candidate!</p>
+                <a href="signup.php" class="btn-get-started animate__animated animate__fadeInUp">Place an announce</a>
               </div>
             </div>
           </div>
@@ -69,6 +69,50 @@
   </section><!-- End Hero -->
 
   <main id="main">
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-briefcase"></i>
+              <span data-purecounter-start="0" data-purecounter-end="223" data-purecounter-duration="1.25" class="purecounter"></span>
+              <p><strong>Vacancies</strong> for students, graduates and young professionals</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1.25" class="purecounter"></span>
+              <p><strong>Companies</strong> chose our platform to seek for enthusiastic students</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="463" data-purecounter-duration="1.25" class="purecounter"></span>
+              <p><strong>University Students</strong> are joined in our platform</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="978" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hard Workers Candidates</strong> in our Database</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
 
     <!-- ======= Featured Section ======= -->
     <section id="featured" class="featured">

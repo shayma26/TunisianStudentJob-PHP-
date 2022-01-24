@@ -76,10 +76,10 @@ annonce
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php">Home</a></li>
+          <li><a href="about.php">About</a></li>
           <?php
           if(isset($_SESSION['user'])){
             echo '          
-            <li><a href="about.html">About</a></li>
             <li><a href="announce.php">Announces</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</a></li>
