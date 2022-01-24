@@ -20,23 +20,14 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="images/tunisia.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            <h2>Tunisian StudentJob International</h2>
+              <p>In 2022, two Tunisian students; Wissal Lamouchi and Shayma Trad had one sole purpose. Looking for a part-time job. They soon discovered that to find anything online proved to be rather difficult. The solution? They created their very own online job board. Starting out as Student Work, employers posted vacancies and students could apply with ease. Expanding into new markets, Tunisian StudentJob was launched and together a broad online network of over thousands ambitious candidates in all tunisian regions was born.
             </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+            <p class="fst-italic">
+              Stay tuned to our upcoming collaborations with companies abroad !
             </p>
           </div>
         </div>
@@ -50,19 +41,21 @@
 
         <div class="section-title">
           <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>              The way we work is simple. We focus on connecting employers to the best candidates who are actively searching for jobs; including part-time and weekend work, internships, placements and graduate positions. 
+
+</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-6">
-            <div class="testimonial-item">
-              <img src="images/shayma.jpg" class="testimonial-img" alt="">
+            <div class="testimonial-item ">
+              <img src="images/shaymaa.jpg" class="testimonial-img" alt="">
               <h3>Shayma Trad</h3>
-              <h4>Ceo &amp; Founder</h4>
+              <h4>Undergraduate software engineer</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  In only 3 months, <b>more than 200 candidates and more than 10 companies registered</b> in our platform. This is a better way of searching jobs.
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
@@ -72,11 +65,10 @@
             <div class="testimonial-item mt-4 mt-lg-0">
               <img src="images/wissal.PNG" class="testimonial-img" alt="">
               <h3>Wissal Lamouchi</h3>
-              <h4>Designer</h4>
+              <h4>Undergraduate software engineer</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+We believe that our website is <b> the perfect solution of connecting the employers to the best candidats </b> for the best skills and vacancies                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
           </div>
@@ -91,7 +83,7 @@
 
         <div class="section-title">
           <h2>Clients</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <b>These companies also recruit through Tunisian StudentJob</b>
         </div>
 
         <div class="clients-slider swiper">
@@ -113,22 +105,4 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          </div>
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 <?php include 'components/footer.php'; ?>

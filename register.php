@@ -94,6 +94,11 @@
 
                 // Save to DB and check
                 if(mysqli_query($conn, $sql)){
+                    if (move_uploaded_file($_FILES['logo']['tmp_name'], $logoTarget)) {
+                echo "Image uploaded successfully";
+            } else {
+                echo "Failed to upload image";
+            }
                     $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
                     $_SESSION['user'] = $email;
                     $_SESSION['username'] = $fname;
