@@ -9,9 +9,9 @@
         
     //2. Create SQL Query to Delete Profile
     if($type == 'student'){
-        $sql = "DELETE FROM etudiant WHERE email_et=$email";
+        $sql = "DELETE FROM etudiant WHERE email_et='$email'";
     }else{
-        $sql = "DELETE FROM employeur WHERE email_em=$email";
+        $sql = "DELETE FROM employeur WHERE email_em='$email'";
     }
 
     //Execute the Query
@@ -20,6 +20,7 @@
     // Check whether the query executed successfully or not
     if($res==true)
     {
+        session_destroy();
         header('location:'.SITEURL);
     }
     else
@@ -27,6 +28,7 @@
         //Failed to Delete Profile
         $_SESSION['delete'] = "<div class=\"alert alert-danger\" role=\"alert\">Failed to Delete account. Try Again Later.</div>";
         header('location:'.SITEURL.'profile.php');
+                echo 'update_query error: ' . mysqli_error($conn);
     }
 
 ?>

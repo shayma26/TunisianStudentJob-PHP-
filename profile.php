@@ -219,8 +219,9 @@ include('components/login-check.php');
 </section><!-- End Team Section -->
 
 </main><!-- End #main -->
-<!-- deleteModal -->
 
+
+<!-- deleteModal -->
 <div id="deleteModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
