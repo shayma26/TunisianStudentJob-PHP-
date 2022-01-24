@@ -12,8 +12,8 @@
   <title>Student Job</title>
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="images/logoo.png" rel="icon">
+  <link href="images/logoo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -80,11 +80,7 @@ annonce
           if(isset($_SESSION['user'])){
             echo '          
             <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="announce.php">Announces</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="blog.html">Blog</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</a></li>
             ';

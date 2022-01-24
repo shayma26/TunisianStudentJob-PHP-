@@ -1,6 +1,5 @@
 <?php include('components/header.php');
 include('components/login-check.php');
-    //TODO delete, settings
 ?>
 <main id="main">
 
@@ -57,9 +56,16 @@ include('components/login-check.php');
   }
   if(isset($_SESSION['delete'])){
     echo $_SESSION['delete'];
-        unset($_SESSION['delete']);
-    
+    unset($_SESSION['delete']); 
   }
+  if(isset($_SESSION['companyExist'])){
+    echo $_SESSION['companyExist'];
+    unset($_SESSION['companyExist']);
+    }
+    if(isset($_SESSION['updateSuccess'])){
+    echo $_SESSION['updateSuccess'];
+    unset($_SESSION['updateSuccess']);
+    }
   ?>
 
   <!-- ======= Team Section ======= -->
@@ -199,8 +205,8 @@ include('components/login-check.php');
         <button type="button" class="btn btn-danger" name="delete" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
         </form>
 
-        <form class="col-sm"  action="updateProfile.php" method="POST">
-        <input type="submit" class="btn btn-primary" name="update" value="Update Account" >
+        <form class="col-sm"  action="updateProfileForm.php" method="POST">
+        <input type="submit" class="btn btn-primary" name="goupdate" value="Update Account" >
         </form>
         </div>
         </div>
