@@ -86,7 +86,7 @@ annonce
             <li><a href="pricing.html">Pricing</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Log out</a></li>
+            <li><a href="" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</a></li>
             ';
           }else{
             echo '
@@ -102,8 +102,8 @@ annonce
     </div>
   </header><!-- End Header -->
 
-    <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- logoutModal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

@@ -54,7 +54,11 @@ include('components/login-check.php');
       else
         {$profileimg="images/".$row['logo'];}
     }
-
+  }
+  if(isset($_SESSION['delete'])){
+    echo $_SESSION['delete'];
+        unset($_SESSION['delete']);
+    
   }
   ?>
 
@@ -63,7 +67,6 @@ include('components/login-check.php');
     <div class="container">
 
       <div class="row">
-        <!--d-flex justify-content-center-->
         <div class="col-lg-6 col-md-12" 
         style="display: block;
         margin-left: auto;
@@ -191,13 +194,45 @@ include('components/login-check.php');
             '.$website.'</div>
             </div>';
           } ?>
-        </div>
-      </div>
-    </div>
+        <div class="row" style="margin: 30px;">
+        <form class="col-sm">
+        <button type="button" class="btn btn-danger" name="delete" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
+        </form>
 
+        <form class="col-sm"  action="updateProfile.php" method="POST">
+        <input type="submit" class="btn btn-primary" name="update" value="Update Account" >
+        </form>
+        </div>
+        </div>
+
+      </div>
+<!--
+    -->
+    </div>
   </div>
 </section><!-- End Team Section -->
 
 </main><!-- End #main -->
+<!-- deleteModal -->
 
+<div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete account</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete your account ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" onclick='window.open("deleteProfile.php","_self")'>Yes</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <?php include('components/footer.php'); ?>

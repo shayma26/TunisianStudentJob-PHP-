@@ -20,11 +20,11 @@
             header('location:'.SITEURL.'signup.php');
         }
         else{// Check email if existed in employers
-           $verifemailreq="SELECT email_em FROM employeur WHERE email_em='$email'";
-           $res = mysqli_query($conn, $verifemailreq);
-           $count = mysqli_num_rows($res);
+         $verifemailreq="SELECT email_em FROM employeur WHERE email_em='$email'";
+         $res = mysqli_query($conn, $verifemailreq);
+         $count = mysqli_num_rows($res);
 
-           if($count==1){
+         if($count==1){
             $_SESSION['emailExist'] = "<div class=\"alert alert-danger\" role=\"alert\">Please enter a valid e-mail</div>";
             header('location:'.SITEURL.'signup.php');
         }else{
@@ -33,17 +33,17 @@
             $psd2=$_POST['password2'];
 
             if($psd1==$psd2){
-               $fname=$_POST['fname'];
-               $lname=$_POST['lname'];
-               $gender=$_POST['gender'];
-               $birthdate=$_POST['birthdate'];
-               $address=$_POST['address'];
-               $city=$_POST['city'];
-               $zip=$_POST['zip'];
-               $phone=$_POST['phone'];
-               $type=$_POST['type'];
+             $fname=$_POST['fname'];
+             $lname=$_POST['lname'];
+             $gender=$_POST['gender'];
+             $birthdate=$_POST['birthdate'];
+             $address=$_POST['address'];
+             $city=$_POST['city'];
+             $zip=$_POST['zip'];
+             $phone=$_POST['phone'];
+             $type=$_POST['type'];
 
-               if($type=="student"){
+             if($type=="student"){
                 $university=$_POST['university'];
                 $institute=$_POST['institute'];
                 $speciality=$_POST['speciality'];
@@ -86,38 +86,35 @@
 
             // Allow only image file formats or empty
                 if($logoType != "jpg" && $logoType != "png" && $logoType != "jpeg" && $logoType != "gif" && $_FILES['logo']['error']!=4 ) {
-                   $_SESSION['imgError'] = "<div class=\"alert alert-danger\" role=\"alert\">Only image files are allowed".$logoType."</div>";
-                    header('location:'.SITEURL.'signup.php');
-                }else{
+                 $_SESSION['imgError'] = "<div class=\"alert alert-danger\" role=\"alert\">Only image files are allowed".$logoType."</div>";
+                 header('location:'.SITEURL.'signup.php');
+             }else{
                 // Insertion request
-                    $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo',null)";
+                $sql = "INSERT INTO employeur VALUES(null,'$lname','$fname','$gender','$email', '$psd1','$phone','$birthdate','$city','$address','$zip','$company','$website','$logo',null)";
 
                 // Save to DB and check
-                    if(mysqli_query($conn, $sql)){
-                        $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
+                if(mysqli_query($conn, $sql)){
+                    $_SESSION['registerSuccess'] = '<div class="alert alert-success" role="alert">User registered successfully</div>';
                     $_SESSION['user'] = $email;
                     $_SESSION['username'] = $fname;
                     $_SESSION['type'] = 'employer';
                     header('location: '.SITEURL);
-                    }else{
-                        echo 'query error: '.mysqli_error($conn);
-                    }
+                }else{
+                    echo 'query error: '.mysqli_error($conn);
                 }
             }
-
         }
-    }
-    else{        
-        $_SESSION['pwd-not-match']= "<div class=\"alert alert-danger\" role=\"alert\"> Veuillez confirmer votre mot de passe </div>";
-        header('location:'.SITEURL.'signup.php');
+
     }
 }
-
+else{        
+    $_SESSION['pwd-not-match']= "<div class=\"alert alert-danger\" role=\"alert\"> Veuillez confirmer votre mot de passe </div>";
+    header('location:'.SITEURL.'signup.php');
 }
 }
 
-
-
+}
+}
 
 ?>
 
@@ -140,5 +137,5 @@
         print_r($users);//conversion ml array lstring lel affichage
         ?>
 
-print_r($users);//conversion ml array lstring lel affichage
-?>
+        print_r($users);//conversion ml array lstring lel affichage
+    ?>

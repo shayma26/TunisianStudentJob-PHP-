@@ -104,7 +104,7 @@ include('components/login-check.php');
         if (isset($_SESSION['type'])) {
           if ($_SESSION['type'] == 'student') {
             echo ' <form action="favourite_announce.php" method="POST">
-            <button type="submit" name="fav" class="btn" on-click=""><i class="bi bi-heart"></i></button>
+            <button type="submit" name="fav" class="btn" on-click="document.getElementById("heart-icon").className = "bi bi-heart-fill";"><i id="heart-icon" class="bi bi-heart"></i></button>
             </form>
             <li class="d-flex align-items-center"><i class="bi bi-people"></i>'.$nb.' Students are intersted</li>';
 
@@ -231,7 +231,6 @@ include('components/login-check.php');
          <button type="submit" name="submit"><i class="bi bi-search"></i></button>
          </form>
          </div><!-- End sidebar search formn-->
-//TODO counter
          <h3 class="sidebar-title">Types</h3>
          <div class="sidebar-item categories">
          <ul>
