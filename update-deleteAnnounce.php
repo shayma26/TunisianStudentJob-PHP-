@@ -1,7 +1,7 @@
 <?php
 
 //connect to database
-include('config/db_connect.php');
+include('config/constants.php');
 
 /*******delete employer announce****** */
 if (isset($_POST['delete']) && isset($_SESSION['id'])) {

@@ -1,7 +1,7 @@
 <?php
 
 //connect to database
-include('config/db_connect.php');
+include('config/constants.php');
 
 //submit verification
 if (isset($_POST['fav'])) {
@@ -20,13 +20,14 @@ if (isset($_POST['fav'])) {
     if ($res1 = mysqli_query($conn, $sql1)) {
         $count = mysqli_num_rows($res1);
         if ($count = 0) {
-            if ($res2 = mysqli_query($conn, $sql2)) { {
+            if ($res2 = mysqli_query($conn, $sql2)) { 
                     if ($res3 = mysqli_query($conn, $sql3))
                         header('location:' . 'http://localhost/myProject/announce.php');
-                }
+                
             } else {
                 echo 'insert_query error:ooops ' . mysqli_error($conn);
             }
         }
     }
 }
+?>
