@@ -22,7 +22,7 @@
         <div class="carousel-inner" role="listbox">
 
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background:no-repeat center/80% url(assets/img/about.jpg)">
+          <div class="carousel-item active" style="background:no-repeat center/100% url(assets/img/about.jpg)">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tunisian Student Job</span></h2>
@@ -71,7 +71,7 @@
   <main id="main">
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
+    <section id="counts" class="counts" style="margin-top: 150px;">
       <div class="container">
 
         <div class="row no-gutters">
