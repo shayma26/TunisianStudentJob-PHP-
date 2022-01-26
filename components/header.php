@@ -80,7 +80,7 @@ annonce
           <?php
           if(isset($_SESSION['user'])){
             echo '          
-            <li><a href="announce.php">Announces</a></li>
+            <li><a href="announce.php">Announcements</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</a></li>
             ';

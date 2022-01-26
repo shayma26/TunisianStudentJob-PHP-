@@ -5,14 +5,14 @@
   <!-- ======= Breadcrumbs ======= -->
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-      <h2><a href='announce.php'>Announce</a></h2>
+      <h2><a href='announce.php'>Announcements</a></h2>
       <ol>
         <?php
         //include('config/db_connect.php');
         if (isset($_SESSION['type'])) {
           if ($_SESSION['type'] == 'employer') {
-            echo "<li>My Announces</li>";
-            echo "<li><a href='form-announce.php'>Add Announce</a></li>";
+            echo "<li>My Announcements</li>";
+            echo "<li><a href='form-announce.php'>Announce</a></li>";
           }
         }
         ?>
@@ -61,7 +61,7 @@
 
     <div class="col-lg-8 entries">';
     if(mysqli_num_rows($res)==0){
-      echo '<center><h3>No Announces yet</h3></center>';
+      echo '<center><h3>No Announcements yet</h3></center>';
     }
     else{
       while ($row = mysqli_fetch_assoc($res)) {
@@ -273,7 +273,7 @@
          </div>
          </section><!-- End Blog Section -->';
        } else {
-        echo '<center><h3>No Announces yet</h3></center>';
+        echo '<center><h3>No Announcements yet</h3></center>';
       }
       ?>
       <?php include('components/footer.php'); ?>

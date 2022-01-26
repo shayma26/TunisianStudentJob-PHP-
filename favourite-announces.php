@@ -5,7 +5,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
-            <h2><a href='announce.php'>Announce</a></h2>
+            <h2><a href='announce.php'>Announcement</a></h2>
             <ol>
                 <?php
                 //include('config/db_connect.php');
@@ -13,7 +13,7 @@
                     if ($_SESSION['type'] == 'student') {
 
 
-                        echo "<li>My Favourite Announces</li>";
+                        echo "<li>My Favourite Announcements</li>";
                     }
                 }
                 ?>

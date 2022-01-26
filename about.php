@@ -40,7 +40,7 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Testimonials</h2>
+          <h2>Who are we ?</h2>
           <p>              The way we work is simple. We focus on connecting employers to the best candidates who are actively searching for jobs; including part-time and weekend work, internships, placements and graduate positions. 
 
 </p>

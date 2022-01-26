@@ -4,15 +4,15 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
-            <h2><a href='announce.php'>Announce</a></h2>
+            <h2><a href='announce.php'>Announcement</a></h2>
             <ol>
                 <?php
                 //include('config/db_connect.php');
                 if (isset($_SESSION['type'])) {
                     if ($_SESSION['type'] == 'employer') {
 
-                        echo "<li>Update Announce</li>";
-                        echo "<li><a href='employer-announces.php'>My Announces</a></li>";
+                        echo "<li>Update Announcement</li>";
+                        echo "<li><a href='employer-announces.php'>My Announcements</a></li>";
                     }
                 }
                 ?>

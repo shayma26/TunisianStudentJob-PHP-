@@ -8,17 +8,17 @@ include('components/login-check.php');
   <!-- ======= Breadcrumbs ======= -->
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-      <h2>Announce</h2>
+      <h2>Announcement</h2>
       <ol>
         <?php
         //include('config/db_connect.php');
         if (isset($_SESSION['type'])) {
           if ($_SESSION['type'] == 'employer') {
 
-            echo "<li><a href='form-announce.php'>Add Announce</a></li>";
-            echo "<li><a href='employer-announces.php'>My Announces</a></li>";
+            echo "<li><a href='form-announce.php'>Announce</a></li>";
+            echo "<li><a href='employer-announces.php'>My Announcements</a></li>";
           } else if ($_SESSION['type'] == 'student') {
-            echo "<li><a href='favourite-announces.php'>My Favourite Announces</a></li>";
+            echo "<li><a href='favourite-announces.php'>My Favourite Announcements</a></li>";
           }
         }
         ?>
@@ -65,7 +65,7 @@ include('components/login-check.php');
     <div class="row">
     <div class="col-lg-8 entries">';
     if(mysqli_num_rows($res)==0){
-      echo '<center><h3>No Announces yet</h3></center>';
+      echo '<center><h3>No Announcements yet</h3></center>';
     }
     else{
       while ($row = mysqli_fetch_assoc($res)) {
@@ -268,7 +268,7 @@ include('components/login-check.php');
          </div>
          </section><!-- End Blog Section -->';
        } else {
-        echo '<center><h3>No Announces yet</h3></center>';
+        echo '<center><h3>No Announcements yet</h3></center>';
       }
       ?>
       <?php include('components/footer.php'); ?>
